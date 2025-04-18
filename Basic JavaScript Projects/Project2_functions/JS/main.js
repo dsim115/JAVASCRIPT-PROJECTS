@@ -13,3 +13,10 @@ function myFunction(){
     sentence += " It is fun!";
     document.getElementById("Concatenate").innerHTML = sentence;
 }
+
+function myFunction2(x, y) { // Add x and y as parameters
+    return x * y; // Multiply the two parameters
+}
+
+let result = myFunction2(4, 3); // Pass 4 and 3 as arguments
+document.getElementById("demo").innerHTML = result; // Display the result

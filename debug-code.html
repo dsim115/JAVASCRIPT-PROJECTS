@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Debug Code</title>
+        <meta charset="UTF-8">
+    </head>
+    <body onload="pageLoad()">
+        <button onclick="clickCount()">Counter!</button>
+        <button onclick="resetCount()">Reset</button>
+        <p id="counter"></p>
+        <script>
+            // Creates a function that runs when the page first loads
+            function pageLoad() {
+                var greeting = "Welcome to ";
+                greeting += "learning how to debug code ";
+                greeting += "using the console with dev tools!";
+                window.alert(greeting); // Corrected alert statement
+            }
+
+            // Sets default count to 0
+            var count = 0;
+            // Counts the number of clicks
+            function clickCount(){
+                count ++;
+                document.getElementById("counter").innerHTML = count;
+            }
+
+            // Resets numbers of clicks
+            function resetCount(){
+                var count = "";
+                document.getElementById("counter").innerHTML = count;
+            }
+
+        </script>
+    </body>
+</html>

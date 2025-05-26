@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slideshow + Contact Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- jQuery (required for slideshow) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <style>
+    /* Basic reset and font */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+
+    /* Slideshow styles */
+    #slideshow {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      height: 400px;
+      margin: 40px auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    #slideshow > div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    #slideshow img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000; /* Optional: adds a background for letterboxing */
+    }
+
+    /* Sticky Contact Button */
+    .contact-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #04AA6D;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      cursor: pointer;
+      border-radius: 50px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    /* Contact Form Popup */
+    .contact-form-popup {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      border: 2px solid #ccc;
+      background-color: #fff;
+      z-index: 1001;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      border-radius: 10px;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .form-container .btn {
+      padding: 10px;
+      color: white;
+      background-color: #04AA6D;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .form-container .btn.cancel {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slideshow -->
+  <div id="slideshow">
+    <div><img src="Images/Jordan.jpg" alt="Slide 1"></div>
+    <div><img src="Images/Kobe.jpg" alt="Slide 2"></div>
+    <div><img src="Images/Lebron.jpg" alt="Slide 3"></div>
+  </div>
+
+  <!-- Sticky Contact Button -->
+  <button class="contact-button" onclick="openContactForm()">Contact Us</button>
+
+  <!-- Contact Form Popup -->
+  <div class="contact-form-popup" id="contactForm">
+    <form class="form-container">
+      <h2>Contact Us</h2>
+
+      <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Your Name" name="name" required>
+
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Your Email" name="email" required>
+
+      <label for="message"><b>Message</b></label>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+
+      <button type="submit" class="btn">Send</button>
+      <button type="button" class="btn cancel" onclick="closeContactForm()">Close</button>
+    </form>
+  </div>
+
+  <!-- JavaScript for slideshow and form behavior -->
+  <script>
+    // Slideshow Logic
+    $(function () {
+      $("#slideshow > div:gt(0)").hide();
+
+      setInterval(function () {
+        $('#slideshow > div:first')
+          .fadeOut(1000)
+          .next()
+          .fadeIn(1000)
+          .end()
+          .appendTo('#slideshow');
+      }, 3000);
+    });
+
+    // Contact Form Logic
+    function openContactForm() {
+      document.getElementById("contactForm").style.display = "block";
+    }
+
+    function closeContactForm() {
+      document.getElementById("contactForm").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
